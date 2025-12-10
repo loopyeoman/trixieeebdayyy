@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trixie.exe - Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="quiz-screen">
+  <h2 class="title">Trixie Stability Test</h2>
+
+  <div id="quiz-container">
+    <p class="q">1) What is the capital of India?</p>
+    <input class="ans-input">
+
+    <p class="q">2) How many days in a week?</p>
+    <input class="ans-input">
+
+    <p class="q">3) Largest planet?</p>
+    <input class="ans-input">
+
+    <p class="q">4) Who invented gravity?</p>
+    <input class="ans-input">
+
+    <p class="q">5) Opposite of hot?</p>
+    <input class="ans-input">
+
+    <button id="finish-btn">Finish Test</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById("finish-btn").onclick = () => {
+    window.location.href = "reveal.html"; // go to page 2
+  };
+</script>
+
+</body>
+</html>
