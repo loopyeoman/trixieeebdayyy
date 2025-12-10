@@ -2,20 +2,33 @@
 // Reveal Page Script (script.jss)
 // ===============================
 
-// Run everything when reveal page loads
-window.onload = () => {
+// Run everything as soon as DOM is ready (faster than window.onload)
+document.addEventListener("DOMContentLoaded", () => {
     startConfetti();
     startSlideshow();
 
     const bgm = document.getElementById("bgm");
     if (bgm) {
-        bgm.volume = 0.15;
-        // Try to play audio, catch autoplay block
-        bgm.play().catch(err => {
-            console.log("Playback prevented by browser:", err);
-        });
+        fadeInMusic(bgm); // start music with quick fade-in
     }
-};
+});
+
+// -------------------------------
+// Fade-in Music
+// -------------------------------
+function fadeInMusic(audio) {
+    audio.volume = 0;
+    audio.play().catch(err => {
+        console.log("Playback prevented by browser:", err);
+    });
+
+    let v = 0;
+    const fade = setInterval(() => {
+        v += 0.05; // increase volume quickly
+        audio.volume = Math.min(v, 0.15); // cap at 0.15
+        if (v >= 0.15) clearInterval(fade);
+    }, 100); // every 100ms
+}
 
 // -------------------------------
 // Slideshow
